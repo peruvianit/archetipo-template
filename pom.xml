@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>it.peruvianit</groupId>
+  <artifactId>archetipo-archetype</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>maven-archetype</packaging>
+
+  <name>archetipo-archetype</name>
+
+<distributionManagement>
+		 <snapshotRepository>
+		    <id>nexus-snapshots</id>
+		    <url>http://10.140.7.194:8081/nexus/content/repositories/snapshots</url>
+		 </snapshotRepository>
+	</distributionManagement>
+	<properties>
+		<spring.version>4.0.5.RELEASE</spring.version>	
+		<java.version>1.8</java.version>
+		<maven.deploy>2.7</maven.deploy>
+	</properties>
+	
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>3.0.1</version>
+      </extension>
+    </extensions>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-archetype-plugin</artifactId>
+          <version>3.0.1</version>
+        </plugin>
+      
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<parameters>true</parameters>
+				</configuration>
+			</plugin>
+			<plugin>
+			   <artifactId>maven-deploy-plugin</artifactId>
+			   <version>${maven.deploy}</version>
+			   <executions>
+			      <execution>
+			         <id>default-deploy</id>
+			         <phase>deploy</phase>
+			         <goals>
+			            <goal>deploy</goal>
+			         </goals>
+			      </execution>
+			   </executions>
+			</plugin>
+		</plugins>
+    </pluginManagement>
+  </build>
+</project>
